@@ -1,3 +1,4 @@
+# Symfony 
 /web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
@@ -9,3 +10,6 @@
 /vendor/
 /bin/
 /composer.phar
+
+# Aptana
+.project
