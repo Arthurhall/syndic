@@ -1,2 +1,14 @@
+syndic_comment:
+    resource: "@SyndicCommentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+syndic_user:
+    resource: "@SyndicUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+syndic_main:
+    resource: "@SyndicMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

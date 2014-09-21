@@ -17,3 +17,6 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
+    
+    captcha_public_key: xxxxxxxxxxxxxxxxxxxxxxxxx 
+    captcha_private_key: xxxxxxxxxxxxxxxxxxxxxxxxx

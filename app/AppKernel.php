@@ -26,6 +26,20 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle(),
+            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            
+			new Sonata\CoreBundle\SonataCoreBundle(),
+			new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\CacheBundle\SonataCacheBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Syndic\MainBundle\SyndicMainBundle(),
+            new Syndic\UserBundle\SyndicUserBundle(),
+            new Syndic\CommentBundle\SyndicCommentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
