@@ -108,23 +108,23 @@ fos_comment:
             thread:   Syndic\CommentBundle\Entity\Thread
             vote:     Syndic\CommentBundle\Entity\Vote
     
-# sonata_admin:
-    # security:
-        # handler: sonata.admin.security.handler.noop
-    # title:      Syndic
-    # templates:
-        # ## default global templates
-        # #layout:  SonataAdminBundle::standard_layout.html.twig
-        # layout:  SyndicMainBundle:Admin:standard_layout.html.twig
-        # ajax:    SonataAdminBundle::ajax_layout.html.twig
-#  
-        # ## default actions templates, should extend a global templates
-        # list:    SonataAdminBundle:CRUD:list.html.twig
-        # show:    SonataAdminBundle:CRUD:show.html.twig
-        # edit:    SonataAdminBundle:CRUD:edit.html.twig
-        # history: SonataAdminBundle:CRUD:history.html.twig
-        # preview: SonataAdminBundle:CRUD:preview.html.twig
-        # delete:  SonataAdminBundle:CRUD:delete.html.twig
+sonata_admin:
+    security:
+        handler: sonata.admin.security.handler.noop
+    title:      Syndic
+    templates:
+        ## default global templates
+        #layout:  SonataAdminBundle::standard_layout.html.twig
+        layout:  SyndicMainBundle:Admin:standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+ 
+        ## default actions templates, should extend a global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+        history: SonataAdminBundle:CRUD:history.html.twig
+        preview: SonataAdminBundle:CRUD:preview.html.twig
+        delete:  SonataAdminBundle:CRUD:delete.html.twig
  
 sonata_block:
     default_contexts: [cms]
@@ -137,71 +137,71 @@ sonata_block:
         sonata.block.service.action:
         sonata.block.service.rss:
 
-# sonata_doctrine_orm_admin:
-    # entity_manager: ~
-    # templates:
-        # form:
-            # - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
-        # filter:
-            # - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
-        # types:
-            # list:
-                # # image:      SonataAdminBundle:CRUD:list_image.html.twig
-                # # array:      SonataAdminBundle:CRUD:list_array.html.twig
-                # boolean:    SonataAdminBundle:CRUD:list_boolean.html.twig
-                # date:       SonataAdminBundle:CRUD:list_date.html.twig
-                # time:       SonataAdminBundle:CRUD:list_time.html.twig
-                # datetime:   SonataAdminBundle:CRUD:list_datetime.html.twig
-                # text:       SonataAdminBundle:CRUD:base_list_field.html.twig
-                # trans:      SonataAdminBundle:CRUD:list_trans.html.twig
-                # string:     SonataAdminBundle:CRUD:base_list_field.html.twig
-                # smallint:   SonataAdminBundle:CRUD:base_list_field.html.twig
-                # bigint:     SonataAdminBundle:CRUD:base_list_field.html.twig
-                # integer:    SonataAdminBundle:CRUD:base_list_field.html.twig
-                # decimal:    SonataAdminBundle:CRUD:base_list_field.html.twig
-                # identifier: SonataAdminBundle:CRUD:base_list_field.html.twig
-# 
-            # show:
-                # # product_detail: SonataAdminBundle:CRUD:product_detail.html.twig
-                # # text_raw:   SonataAdminBundle:CRUD:text_raw.html.twig
-                # # image:      SonataAdminBundle:CRUD:show_image.html.twig
-                # # array:      SonataAdminBundle:CRUD:show_array.html.twig
-                # boolean:    SonataAdminBundle:CRUD:show_boolean.html.twig
-                # date:       SonataAdminBundle:CRUD:show_date.html.twig
-                # time:       SonataAdminBundle:CRUD:show_time.html.twig
-                # datetime:   SonataAdminBundle:CRUD:show_datetime.html.twig
-                # text:       SonataAdminBundle:CRUD:base_show_field.html.twig
-                # trans:      SonataAdminBundle:CRUD:show_trans.html.twig
-                # string:     SonataAdminBundle:CRUD:base_show_field.html.twig
-                # smallint:   SonataAdminBundle:CRUD:base_show_field.html.twig
-                # bigint:     SonataAdminBundle:CRUD:base_show_field.html.twig
-                # integer:    SonataAdminBundle:CRUD:base_show_field.html.twig
-                # decimal:    SonataAdminBundle:CRUD:base_show_field.html.twig
+sonata_doctrine_orm_admin:
+    entity_manager: ~
+    templates:
+        form:
+            - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
+        filter:
+            - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
+        types:
+            list:
+                image:      SonataAdminBundle:CRUD:list_image.html.twig
+                array:      SonataAdminBundle:CRUD:list_array.html.twig
+                boolean:    SonataAdminBundle:CRUD:list_boolean.html.twig
+                date:       SonataAdminBundle:CRUD:list_date.html.twig
+                time:       SonataAdminBundle:CRUD:list_time.html.twig
+                datetime:   SonataAdminBundle:CRUD:list_datetime.html.twig
+                text:       SonataAdminBundle:CRUD:base_list_field.html.twig
+                trans:      SonataAdminBundle:CRUD:list_trans.html.twig
+                string:     SonataAdminBundle:CRUD:base_list_field.html.twig
+                smallint:   SonataAdminBundle:CRUD:base_list_field.html.twig
+                bigint:     SonataAdminBundle:CRUD:base_list_field.html.twig
+                integer:    SonataAdminBundle:CRUD:base_list_field.html.twig
+                decimal:    SonataAdminBundle:CRUD:base_list_field.html.twig
+                identifier: SonataAdminBundle:CRUD:base_list_field.html.twig
 
-# sonata_user:
-    # impersonating_route:    sonata_user_impersonating
-    # table:
-        # user_group: "fos_user_user_group"
-    # security_acl:     false
-    # class:
-        # user:         Syndic\UserBundle\Entity\User
-        # group:        Syndic\UserBundle\Entity\Group
-    # admin:                  # Admin Classes
-        # user:
-            # class:          Syndic\UserBundle\Admin\Entity\UserAdmin
-            # controller:     SonataAdminBundle:CRUD
-            # translation:    SonataUserBundle
-#  
-        # group:
-            # class:          Syndic\UserBundle\Admin\Entity\GroupAdmin
-            # controller:     SonataAdminBundle:CRUD
-            # translation:    SonataUserBundle
-    # profile:  # Profile Form (firstname, lastname, etc ...)
-        # form:
-            # type:               sonata_user_profile
-            # handler:            sonata.user.profile.form.handler.default
-            # name:               sonata_user_profile_form
-            # validation_groups:  [Profile]
+            show:
+                product_detail: SonataAdminBundle:CRUD:product_detail.html.twig
+                text_raw:   SonataAdminBundle:CRUD:text_raw.html.twig
+                image:      SonataAdminBundle:CRUD:show_image.html.twig
+                array:      SonataAdminBundle:CRUD:show_array.html.twig
+                boolean:    SonataAdminBundle:CRUD:show_boolean.html.twig
+                date:       SonataAdminBundle:CRUD:show_date.html.twig
+                time:       SonataAdminBundle:CRUD:show_time.html.twig
+                datetime:   SonataAdminBundle:CRUD:show_datetime.html.twig
+                text:       SonataAdminBundle:CRUD:base_show_field.html.twig
+                trans:      SonataAdminBundle:CRUD:show_trans.html.twig
+                string:     SonataAdminBundle:CRUD:base_show_field.html.twig
+                smallint:   SonataAdminBundle:CRUD:base_show_field.html.twig
+                bigint:     SonataAdminBundle:CRUD:base_show_field.html.twig
+                integer:    SonataAdminBundle:CRUD:base_show_field.html.twig
+                decimal:    SonataAdminBundle:CRUD:base_show_field.html.twig
+
+sonata_user:
+    impersonating_route:    sonata_user_impersonating
+    table:
+        user_group: "users_groups"
+    security_acl:     false
+    class:
+        user:         Syndic\UserBundle\Entity\User
+        group:        Syndic\UserBundle\Entity\Group
+    admin:                  # Admin Classes
+        user:
+            class:          Syndic\UserBundle\Admin\Entity\UserAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+ 
+        group:
+            class:          Syndic\UserBundle\Admin\Entity\GroupAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+    profile: # Profile Form (firstname, lastname, etc ...)
+        form:
+            type:               sonata_user_profile
+            handler:            sonata.user.profile.form.handler.default
+            name:               sonata_user_profile_form
+            validation_groups:  [Profile]
     
 ewz_recaptcha:
     enabled: true
