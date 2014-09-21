@@ -48,6 +48,8 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
+        types:
+            json: Sonata\Doctrine\Types\JsonType
         driver:   "%database_driver%"
         host:     "%database_host%"
         port:     "%database_port%"
@@ -114,8 +116,8 @@ sonata_admin:
     title:      Syndic
     templates:
         ## default global templates
-        #layout:  SonataAdminBundle::standard_layout.html.twig
-        layout:  SyndicMainBundle:Admin:standard_layout.html.twig
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        #layout:  SyndicMainBundle:Admin:standard_layout.html.twig
         ajax:    SonataAdminBundle::ajax_layout.html.twig
  
         ## default actions templates, should extend a global templates
@@ -146,8 +148,8 @@ sonata_doctrine_orm_admin:
             - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
         types:
             list:
-                image:      SonataAdminBundle:CRUD:list_image.html.twig
-                array:      SonataAdminBundle:CRUD:list_array.html.twig
+                # image:      SonataAdminBundle:CRUD:list_image.html.twig
+                # array:      SonataAdminBundle:CRUD:list_array.html.twig
                 boolean:    SonataAdminBundle:CRUD:list_boolean.html.twig
                 date:       SonataAdminBundle:CRUD:list_date.html.twig
                 time:       SonataAdminBundle:CRUD:list_time.html.twig
@@ -162,10 +164,9 @@ sonata_doctrine_orm_admin:
                 identifier: SonataAdminBundle:CRUD:base_list_field.html.twig
 
             show:
-                product_detail: SonataAdminBundle:CRUD:product_detail.html.twig
-                text_raw:   SonataAdminBundle:CRUD:text_raw.html.twig
-                image:      SonataAdminBundle:CRUD:show_image.html.twig
-                array:      SonataAdminBundle:CRUD:show_array.html.twig
+                # text_raw:   SonataAdminBundle:CRUD:text_raw.html.twig
+                # image:      SonataAdminBundle:CRUD:show_image.html.twig
+                # array:      SonataAdminBundle:CRUD:show_array.html.twig
                 boolean:    SonataAdminBundle:CRUD:show_boolean.html.twig
                 date:       SonataAdminBundle:CRUD:show_date.html.twig
                 time:       SonataAdminBundle:CRUD:show_time.html.twig
