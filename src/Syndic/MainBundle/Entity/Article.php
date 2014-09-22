@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Article
  *
  * @ORM\Table(name="article")
- * @ORM\Entity(repositoryClass="Syndic\MainBundle\Entity\Repository\ArticleRepository")
+ * @ORM\Entity(repositoryClass="Syndic\MainBundle\Repository\ArticleRepository")
  */
 class Article
 {
@@ -19,7 +19,7 @@ class Article
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -53,13 +53,6 @@ class Article
 	 * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
-    
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="is_home_since", type="datetime", nullable=true)
-     */
-    private $isHomeSince;
 
     /**
      * @var \DateTime
@@ -88,13 +81,11 @@ class Article
      */
     private $slug;
 
+    
     /**
-     * @var \Image
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="Image")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="image_id", referencedColumnName="id", nullable=false)
-     * })
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="article")
      */
     private $image;
 
@@ -124,8 +115,6 @@ class Article
      */
     public function __construct()
     {
-        $this->image = new \Doctrine\Common\Collections\ArrayCollection();
-        
         $this->isPrivate = false;
         $this->isPublished = false;
     }
@@ -287,4 +276,129 @@ class Article
         return $this->isPublished;
     }
 
+
+    /**
+     * Set isPrivate
+     *
+     * @param boolean $isPrivate
+     * @return Article
+     */
+    public function setIsPrivate($isPrivate)
+    {
+        $this->isPrivate = $isPrivate;
+
+        return $this;
+    }
+
+    /**
+     * Get isPrivate
+     *
+     * @return boolean 
+     */
+    public function getIsPrivate()
+    {
+        return $this->isPrivate;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Article
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Syndic\MainBundle\Entity\Category $category
+     * @return Article
+     */
+    public function setCategory(\Syndic\MainBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Syndic\MainBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Syndic\UserBundle\Entity\User $user
+     * @return Article
+     */
+    public function setUser(\Syndic\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Syndic\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \Syndic\MainBundle\Entity\Image $image
+     * @return Article
+     */
+    public function addImage(\Syndic\MainBundle\Entity\Image $image)
+    {
+        $this->image[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \Syndic\MainBundle\Entity\Image $image
+     */
+    public function removeImage(\Syndic\MainBundle\Entity\Image $image)
+    {
+        $this->image->removeElement($image);
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 }

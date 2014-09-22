@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @ORM\Entity(repositoryClass="Syndic\UserBundle\Repository\GroupRepository")
-* @ORM\Table(name="group")
+* @ORM\Table(name="ugroup")
 */
 class Group extends BaseGroup
 {

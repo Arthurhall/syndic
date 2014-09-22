@@ -11,7 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Image
  *
  * @ORM\Table(name="image")
- * @ORM\Entity(repositoryClass="Syndic\MainBundle\Entity\Repository\ImageRepository")
+ * @ORM\Entity(repositoryClass="Syndic\MainBundle\Repository\ImageRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Image
@@ -58,9 +58,12 @@ class Image
     private $updatedAt;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Article
      *
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="image")
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="image")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="article_id", referencedColumnName="id", nullable=false)
+     * })
      */
     private $article;
     
@@ -240,39 +243,6 @@ class Image
     }
 
     /**
-     * Add article
-     *
-     * @param \Amap\MainBundle\Entity\Article $article
-     * @return Image
-     */
-    public function addArticle(\Amap\MainBundle\Entity\Article $article)
-    {
-        $this->article[] = $article;
-    
-        return $this;
-    }
-
-    /**
-     * Remove article
-     *
-     * @param \Amap\MainBundle\Entity\Article $article
-     */
-    public function removeArticle(\Amap\MainBundle\Entity\Article $article)
-    {
-        $this->article->removeElement($article);
-    }
-
-    /**
-     * Get article
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getArticle()
-    {
-        return $this->article;
-    }
-
-    /**
      * Set path
      *
      * @param string $path
@@ -316,5 +286,28 @@ class Image
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set article
+     *
+     * @param \Syndic\MainBundle\Entity\Article $article
+     * @return Image
+     */
+    public function setArticle(\Syndic\MainBundle\Entity\Article $article)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \Syndic\MainBundle\Entity\Article 
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }

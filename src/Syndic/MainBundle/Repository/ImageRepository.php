@@ -1,6 +1,6 @@
 <?php
 
-namespace Syndic\MainBundle\Entity\Repository;
+namespace Syndic\MainBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

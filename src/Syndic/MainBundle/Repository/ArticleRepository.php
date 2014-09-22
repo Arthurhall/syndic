@@ -1,6 +1,6 @@
 <?php
 
-namespace Syndic\MainBundle\Entity\Repository;
+namespace Syndic\MainBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -12,7 +12,6 @@ class ArticleRepository extends EntityRepository
 		$qb = $this->createQueryBuilder('a')
 			->addSelect('i')
             ->leftJoin('a.image', 'i')
-            ->where('a.isHome = 1')
 		;
         
         $r = $qb->getQuery()
@@ -28,7 +27,6 @@ class ArticleRepository extends EntityRepository
             ->InnerJoin('a.category', 'c')
             
             ->where('a.isPublished = 1')
-			->andWhere('a.isHome = 0')
 			
 			->orderBy('a.publishedAt', 'DESC')
         ;
@@ -47,7 +45,6 @@ class ArticleRepository extends EntityRepository
             ->InnerJoin('a.category', 'c')
 			
 			->where('a.isPublished = 1')
-			->andWhere('a.isHome = 0')
 			->andWhere('c.slug = :slug')
             ->setParameter('slug', $arr['slug'])
 			
@@ -69,7 +66,6 @@ class ArticleRepository extends EntityRepository
     		INNER JOIN category as c 
     		ON a.category_id = c.id
     		WHERE a.is_published = 1
-    		AND a.is_home = 0
     		";
     	
 		$conn = $this->getEntityManager()->getConnection();

@@ -34,7 +34,6 @@ class ArticleAdmin extends Admin
         $formMapper
             ->add('title')
 			->add('isPublished', 'checkbox', array('required' => false))
-			->add('isHome', 'checkbox', array('required' => false))
 			->add('category')
 			->add('user')
             ->add('content', 'textarea', array(
@@ -44,13 +43,6 @@ class ArticleAdmin extends Admin
             		'data-theme' => 'advanced')
     			)
 			)
-			->add('delivery', 'sonata_type_model', array(
-                'required' => false, 
-                'expanded' => false, 
-                'by_reference' => false, 
-                'multiple' => true, 
-                'compound' => false
-            ))
 			->add('image', 'sonata_type_model', array(
                 'required' => false, 
                 'expanded' => false, 
@@ -67,9 +59,9 @@ class ArticleAdmin extends Admin
         	->add('title')
             ->add('content')
 			->add('category')
-            ->add('createdAt', 'doctrine_orm_date', array('input_type' => 'date'))
-			->add('updatedAt', 'doctrine_orm_date', array('input_type' => 'date'))
-            ->add('publishedAt', 'doctrine_orm_date', array('input_type' => 'date'))
+            // ->add('createdAt', 'doctrine_orm_date', array('input_type' => 'date'))
+			// ->add('updatedAt', 'doctrine_orm_date', array('input_type' => 'date'))
+            // ->add('publishedAt', 'doctrine_orm_date', array('input_type' => 'date'))
             ->add('isPublished')
         ;
     }
@@ -80,13 +72,12 @@ class ArticleAdmin extends Admin
             ->addIdentifier('title')
 			->add('user')
             ->add('isPublished')
-			->add('isHome')
             ->add('category')
 			->add('createdAt')
 			
 			->add('_action', 'actions', array(
                 'actions' => array(
-                    'view' => array(),
+                    'show' => array(),
                     'delete' => array(),
                     //'edit' => array(),
                 )
@@ -99,10 +90,10 @@ class ArticleAdmin extends Admin
         $showMapper
             ->add('title')
 			->add('user')
-            ->add('content', 'text_raw')
+            ->add('content')
 			->add('isPublished')
             ->add('category')
-            ->add('image', 'image')
+            ->add('image') // , 'image'
             ->with('Dates')
                 ->add('publishedAt')
                 ->add('createdAt')

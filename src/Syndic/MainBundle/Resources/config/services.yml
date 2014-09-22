@@ -5,3 +5,27 @@ services:
 #    syndic_main.example:
 #        class: %syndic_main.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    # ADMIN :
+    admin.article:
+        class: Syndic\MainBundle\Admin\ArticleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Blog, label: Article }
+        arguments: [ null, Syndic\MainBundle\Entity\Article, SonataAdminBundle:CRUD ]
+        # calls:
+            # - [ setSecurityContext, [ @security.context ] ]
+            # - [ setEntityManager, [ @doctrine.orm.entity_manager ] ]
+        
+    admin.image:
+        class: Syndic\MainBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Blog, label: Images }
+        arguments: [ null, Syndic\MainBundle\Entity\Image, SonataAdminBundle:CRUD ]
+        
+    admin.category:
+        class: Syndic\MainBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Blog, label: Catégories }
+        arguments: [ null, Syndic\MainBundle\Entity\Category, SonataAdminBundle:CRUD ]
+        
+
