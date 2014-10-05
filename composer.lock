@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "826dd6cbe7011a8e035058fb8e25d2a7",
+    "hash": "5df9ac332139eecb0bf76de68194d1f6",
     "packages": [
         {
             "name": "avalanche123/imagine-bundle",
@@ -1503,10 +1503,10 @@
         },
         {
             "name": "jquery/jquery",
-            "version": "1.10.2",
+            "version": "1.11.1",
             "dist": {
                 "type": "file",
-                "url": "http://code.jquery.com/jquery-1.10.2.js",
+                "url": "http://code.jquery.com/jquery-1.11.1.js",
                 "reference": null,
                 "shasum": null
             },

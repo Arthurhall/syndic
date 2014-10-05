@@ -72,7 +72,7 @@ assetic:
             output: js/bootstrap.js
         jquery:
             inputs:
-                - %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.js
+                - %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.11.1.js
             output: js/jquery.js
 
 
