@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+
+{% block title %}Syndic{% endblock %}
+
+
+{% block stylesheets %}
+
+    {% stylesheets
+        'css/bootstrap.css'
+        '@SyndicMainBundle/Resources/less/*.less'
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+    {% endstylesheets %}
+    
+{% endblock stylesheets %}
+
+
+{% block body %}
+
+	{% block header %}
+	{% endblock header %}
+	
+	{% block content %}
+	{% endblock content %}
+	
+	{% block footer %}
+	{% endblock footer %}
+
+{% endblock body %}
+
+
+{% block javascripts %}
+    
+    {% javascripts
+        'js/jquery.js'
+        'js/bootstrap.js'
+        
+        '@SyndicMainBundle/Resources/public/js/*.js'
+    %}
+         <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock javascripts %}
+

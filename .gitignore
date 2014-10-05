@@ -1,11 +1,16 @@
 # Symfony 
 /web/bundles/
+/web/js/
+/web/css/
+/web/uploads/
+
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
+
 /build/
 /vendor/
 /bin/

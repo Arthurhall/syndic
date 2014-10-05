@@ -1,0 +1,8 @@
+<a{% for attr, value in options %} {{ attr }}="{{ value }}"{% endfor %}>
+    {{ title }} &nbsp;
+    {% if direction == 'asc' %}
+        <i class="glyphicon glyphicon-sort-by-attributes-alt"></i>
+    {% elseif direction == 'desc' %}
+        <i class="glyphicon glyphicon-sort-by-attributes"></i>
+    {% endif %}
+</a>

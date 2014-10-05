@@ -52,6 +52,7 @@
         "twbs/bootstrap": "3.0.*",
         "jquery/jquery":  "1.10.*",
         "leafo/lessphp": "0.4.0",
+        "oyejorge/less.php": "~1.5",
         "excelwebzone/recaptcha-bundle": "dev-master",
         "avalanche123/imagine-bundle": "v2.1"
     },

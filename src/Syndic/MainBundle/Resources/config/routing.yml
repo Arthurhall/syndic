@@ -1,3 +1,7 @@
-syndic_main_homepage:
-    path:     /hello/{name}
+home:
+    path:     /
     defaults: { _controller: SyndicMainBundle:Default:index }
+
+home:
+    path:     /contact
+    defaults: { _controller: SyndicMainBundle:Default:contact }
