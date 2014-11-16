@@ -25,9 +25,16 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=100, nullable=true)
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
      */
     private $title;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=1000, nullable=true)
+     */
+    private $description;
     
     /**
      * @ORM\Column(name="slug", length=245, unique=true)
@@ -95,5 +102,28 @@ class Category
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Category
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

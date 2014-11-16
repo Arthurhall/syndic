@@ -1,45 +1,109 @@
 {% extends '::base.html.twig' %}
 
-
-{% block title %}Syndic{% endblock %}
+{% block title %}
+	CFE CGC
+{% endblock title %}
 
 
 {% block stylesheets %}
 
-    {% stylesheets
-        'css/bootstrap.css'
-        '@SyndicMainBundle/Resources/less/*.less'
-    %}
-        <link href="{{ asset_url }}" rel="stylesheet" type="text/css">
-    {% endstylesheets %}
-    
+	{% stylesheets
+		'css/bootstrap.css'
+		'@SyndicMainBundle/Resources/less/*.less'
+	%}
+		<link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+	{% endstylesheets %}
+	
 {% endblock stylesheets %}
 
 
 {% block body %}
 
-	{% block header %}
-	{% endblock header %}
+	<div class="container-fluid">
+		
+			{% block header %}
+				<div class="row-fluid">
+					<header class="col-xs-12">
+						<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+						    
+						    <div class="navbar-header">
+						    	<img src="{{ asset('/bundles/Syndicmain/images/novartis.png') }}" alt="CFE CGC" id="main-logo" />
+						    </div>
+						    
+						    <div class="collapse navbar-collapse navbar-ex1-collapse">
+						        {{ knp_menu_render('main', { 'style': 'navbar' }) }}
+						    	
+						    	{#
+							    <ul class="nav navbar-nav navbar-right" id="connect">
+							    {% if app.user is not null and is_granted('ROLE_USER') %}
+						    		<li>
+						    			<a href="{{path('logout')}}">
+						    				{{ icon('user') }}
+						    				Déconnexion
+						    			</a>
+						    		</li>
+						    	{% else %}
+						    		<li>
+					                    <a href="{{path('login')}}">
+					                        {{ icon('user') }}
+					                        Connexion
+					                    </a>
+					                </li>
+					    		{% endif %}
+					    		</ul>
+					    		#}
+					    		
+    						</div><!-- .navbar-collapse -->
+						</nav>
+						
+						<!-- Display all flash messages : --> 
+						{% include 'BraincraftedBootstrapBundle::flash.html.twig' with { 'close': true } %}
+						
+					</header>
+				</div> <!-- .row -->
+			{% endblock header %}
+		
+			
+		<div class="row-fluid">
+			
+			<section class="col-xs-10">
+			{% block content %}
+			
+			{% endblock content %}
+			</section>
+			
+			<aside class="col-xs-2">
+			{% block sidebar %}
+			
+			{% endblock sidebar %}
+			</aside>
+			
+		<div> <!-- .row -->
+		
+		<div class="row-fluid">	
+			{% block footer %}
+			
+			{% endblock footer %}
+		<div> <!-- .row -->	
+		
+	</div> <!-- .container-fluid -->
 	
-	{% block content %}
-	{% endblock content %}
-	
-	{% block footer %}
-	{% endblock footer %}
-
 {% endblock body %}
 
 
 {% block javascripts %}
-    
-    {% javascripts
-        'js/jquery.js'
-        'js/bootstrap.js'
-        
-        '@SyndicMainBundle/Resources/public/js/*.js'
-    %}
-         <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+	
+	{% javascripts
+		'js/jquery.js'
+		'js/bootstrap.js'
+		
+		'@SyndicMainBundle/Resources/public/js/*.js'
+	%}
+	     <script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	
+	{# FOSJSRoutingBundle script : #}
+	<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
 
 {% endblock javascripts %}
-

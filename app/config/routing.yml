@@ -45,8 +45,7 @@ soanata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
 
-
+# import routes from a controller directory
 syndic_main:
-    resource: "@SyndicMainBundle/Resources/config/routing.yml"
-    prefix:   /
-
+    resource: "@SyndicMainBundle/Controller"
+    type:     annotation

@@ -5,17 +5,39 @@ namespace Syndic\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Syndic\MainBundle\Form\ContactType;
 
 
-class DefaultController extends Controller
+class MainController extends Controller
 {
+    /**
+     * Home
+     *
+     * @Route("/", name="home")
+     * @Method("GET")
+     * @Template("SyndicMainBundle:Main:index.html.twig")
+     */
     public function indexAction()
     {
-        return $this->render('SyndicMainBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('SyndicMainBundle:Category')->findAll();
+        
+        return array(
+            'categories' => $categories
+        );
     }
     
+    /**
+     * Contact
+     *
+     * @Route("/", name="contact")
+     * @Method("GET")
+     * @Template("SyndicMainBundle:Main:contact.html.twig")
+     */
     public function contactAction(Request $request)
     {
         $url = $this->generateUrl('contact');
@@ -38,7 +60,7 @@ class DefaultController extends Controller
                 ->setTo( $this->container->getParameter('email') )
                 ->setCharset('UTF-8')    
                 ->setContentType('text/html')
-                ->setBody( $this->renderView('AmapMainBundle:Default:contact_mail.html.twig', array('data' => $data)) )
+                ->setBody( $this->renderView('AmapMainBundle:Main:contact_mail.html.twig', array('data' => $data)) )
             ;
             
             $this->get('mailer')->send($message); 
@@ -49,8 +71,8 @@ class DefaultController extends Controller
             return $this->redirect($url);
         }
         
-        return $this->render('SyndicMainBundle:Default:contact.html.twig', array(
+        return array(
             'form' => $form->createView(),
-        ));
+        );
     }
 }
