@@ -15,6 +15,7 @@
 /vendor/
 /bin/
 /composer.phar
+/composer.lock
 *.php~
 
 # Aptana
