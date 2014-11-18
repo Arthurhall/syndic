@@ -11,7 +11,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Syndic\MainBundle\Form\ContactType;
 
-
+/**
+ * Main controller.
+ *
+ * @Route("/")
+ */
 class MainController extends Controller
 {
     /**
@@ -34,7 +38,7 @@ class MainController extends Controller
     /**
      * Contact
      *
-     * @Route("/", name="contact")
+     * @Route("/contact", name="contact")
      * @Method("GET")
      * @Template("SyndicMainBundle:Main:contact.html.twig")
      */
