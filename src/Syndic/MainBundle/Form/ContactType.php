@@ -14,30 +14,52 @@ class ContactType extends AbstractType
     	
         $builder
         	->add('civilite', 'choice', array(
+                'label' => 'Civilité',
 				'choices' => array(
 					'Mlle' => 'Mlle',
 					'Mme' => 'Mme',
 					'Mr' => 'Mr',
 				),
-				'expanded' => true,
+				'expanded' => false,
 				'required' => false
 			))
             
-			->add('nom', 'text', array('attr' => array('placeholder' => 'Nom') ) )
-			->add('prenom', 'text', array('attr' => array('placeholder' => 'Prénom') ) )
-			->add('email', 'email', array('attr' => array('placeholder' => 'Votre e-mail') ) )
-			->add('tel', 'text', array('required' => false, 'attr' => array('placeholder' => 'Téléphone') ) )
+			->add('nom', 'text', array(
+                'label' => 'Nom',
+                'attr' => array('placeholder' => 'Nom') 
+            ))
+			->add('prenom', 'text', array(
+                'label' => 'Prénom',
+                'attr' => array('placeholder' => 'Prénom') 
+            ))
+			->add('email', 'email', array(
+                'label' => 'email',
+                'attr' => array('placeholder' => 'Votre e-mail') 
+            ))
+			->add('tel', 'text', array(
+                'label' => 'Téléphone',
+                'required' => false, 
+                'attr' => array('placeholder' => 'Téléphone') 
+            ))
 
 			
-			->add('sujet', 'text', array('attr' => array('placeholder' => 'Sujet'), 'label' => '' ) )
+			->add('sujet', 'text', array(
+                'label' => 'Sujet',
+                'attr' => array('placeholder' => 'Sujet'), 
+            ))
 			
 			->add('message', 'textarea', array(
+                'label' => 'Message',
         		'attr' => array(
         			'class' => 'tinymce',
             		'data-theme' => 'simple'
 				),
 				'required' => false
     		))
+            
+            ->add('submit', 'submit', array(
+                'label' => 'Envoyer'
+            ))
         ;
     }
 

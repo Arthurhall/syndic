@@ -16,16 +16,18 @@
     </div>
     
 	{% for category in categories %}
-        {% if loop.first or loop.index is divisibleby(4) %}
+        {% if loop.first or loop.index is divisibleby(3) %}
 	       <div class="row">
         {% endif %}
         
         <div class="col-xs-4">
-			<h2>{{category.title}}</h2>
-			<p>{{category.description}}</p>
+        	<div class="well">
+				<h2>{{category.title}}</h2>
+				<blockquote>{{category.description}}</blockquote>
+			</div>
 		</div>
 		
-		{% if loop.last or loop.index is divisibleby(4) %}
+		{% if loop.last or loop.index is divisibleby(3) %}
            </div>
         {% endif %}
 		
