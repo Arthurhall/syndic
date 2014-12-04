@@ -73,7 +73,7 @@ sonata_doctrine_orm_admin:
                 decimal:    SonataAdminBundle:CRUD:base_show_field.html.twig
 
 sonata_user:
-    impersonating_route:    sonata_user_impersonating
+    #impersonating_route:    sonata_user_impersonating
     table:
         user_group: "users_groups"
     security_acl:     false

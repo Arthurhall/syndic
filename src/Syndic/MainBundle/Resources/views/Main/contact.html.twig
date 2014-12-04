@@ -11,11 +11,14 @@
 	{{ tinymce_init() }}
 {% endblock %}
 
+{% block header %}
+    {{ icon('send') }}
+    Contact
+{% endblock %}
+
 
 {% block content %}
-
-	<h1>Contact</h1>
-	
+    
 	{% if app.session.flashbag.has('messageSent') %}
 	
         <div class="alert alert-success">

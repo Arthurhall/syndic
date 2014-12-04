@@ -39,7 +39,7 @@ class MainController extends Controller
      * Contact
      *
      * @Route("/contact", name="contact")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      * @Template("SyndicMainBundle:Main:contact.html.twig")
      */
     public function contactAction(Request $request)
@@ -55,16 +55,15 @@ class MainController extends Controller
 
         if ($form->isValid()) 
         {
-    
             $data = $form->getData();
             
             $message = \Swift_Message::newInstance()
                 ->setSubject('Contact - Syndic')
                 ->setFrom( $data['email'] )
-                ->setTo( $this->container->getParameter('email') )
+                ->setTo( 'test@test.fr' )
                 ->setCharset('UTF-8')    
                 ->setContentType('text/html')
-                ->setBody( $this->renderView('AmapMainBundle:Main:contact_mail.html.twig', array('data' => $data)) )
+                ->setBody( $this->renderView('SyndicMainBundle:Main:contact_mail.html.twig', array('data' => $data)) )
             ;
             
             $this->get('mailer')->send($message); 
