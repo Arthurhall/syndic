@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+
+{% set path = '/' ~ value %}
+
+<img src="{{ path | apply_filter('my_thumb') }}" border="0" alt="{{object.alt}}" title="{{object.title}}" />
+
+{% endblock %}

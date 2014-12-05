@@ -1,0 +1,25 @@
+{% extends 'SyndicMainBundle::layout.html.twig' %}
+
+
+{% block title %}
+    {{ parent() }} - {{ category.title }}
+{% endblock %}
+
+
+{% block header %}
+    {{ category.title }}
+{% endblock %}
+
+
+{% block content %}
+    
+    {% for article in articles %}
+        <div class="box">
+	        <h2>{{ article.title }}</h2>
+	        <div>
+                {{ article.content }}
+	        </div>
+        </div>
+    {% endfor %}
+    
+{% endblock content %}

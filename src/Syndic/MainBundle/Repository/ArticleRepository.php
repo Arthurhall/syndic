@@ -3,6 +3,7 @@
 namespace Syndic\MainBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Syndic\MainBundle\Entity\Category;
 
 
 class ArticleRepository extends EntityRepository
@@ -37,7 +38,7 @@ class ArticleRepository extends EntityRepository
         return $r;
     }
     
-    public function findByCategory( array $arr )
+    public function findByCategory( Category $category )
     {
         $qb = $this->createQueryBuilder('a')
             ->addSelect('c')
@@ -45,8 +46,8 @@ class ArticleRepository extends EntityRepository
             ->InnerJoin('a.category', 'c')
 			
 			->where('a.isPublished = 1')
-			->andWhere('c.slug = :slug')
-            ->setParameter('slug', $arr['slug'])
+			->andWhere('c.id = :id')
+            ->setParameter('id', $category->getId())
 			
 			->orderBy('a.publishedAt', 'DESC')
         ;

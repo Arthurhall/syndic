@@ -40,9 +40,8 @@ class ArticleAdmin extends Admin
         		'attr' => array(
         			'required' => false,
         			'class' => 'tinymce',
-            		'data-theme' => 'advanced')
     			)
-			)
+			))
 			->add('image', 'sonata_type_model', array(
                 'required' => false, 
                 'expanded' => false, 

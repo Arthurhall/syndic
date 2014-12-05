@@ -4,9 +4,18 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %} CFE CGC {% endblock title %}</title>
         
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        
+	        {% stylesheets
+		        'css/bootstrap.css'
+		        '@SyndicMainBundle/Resources/less/*.less' 
+		    %}
+		        <link href="{{ asset_url }}" rel="stylesheet" type="text/css">
+		    {% endstylesheets %}
+		    
+        {% endblock %}
         
         <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
     	{% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
@@ -15,8 +24,97 @@
        
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+
+		    <div class="container-fluid">
+		        
+		        <div class="row-fluid">
+		            <header class="col-xs-12">
+		                <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		                    
+		                    <div class="navbar-header">
+		                        <img src="{{ asset('/bundles/syndicmain/images/novartis.png') }}" alt="CFE CGC" id="main-logo" />
+		                    </div>
+		                    
+		                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+		                        {{ knp_menu_render('main', { 'style': 'navbar' }) }}
+		                        
+		                        {#
+		                        <ul class="nav navbar-nav navbar-right" id="connect">
+		                        {% if app.user is not null and is_granted('ROLE_USER') %}
+		                            <li>
+		                                <a href="{{path('logout')}}">
+		                                    {{ icon('user') }}
+		                                    Déconnexion
+		                                </a>
+		                            </li>
+		                        {% else %}
+		                            <li>
+		                                <a href="{{path('login')}}">
+		                                    {{ icon('user') }}
+		                                    Connexion
+		                                </a>
+		                            </li>
+		                        {% endif %}
+		                        </ul>
+		                        #}
+		                        
+		                    </div><!-- .navbar-collapse -->
+		                </nav>
+		                
+		            </header>
+		        </div> <!-- .row -->        
+		        
+		        <div class="row-fluid">
+		            <section class="col-xs-12">
+		                
+		                {% block pageHeader %}
+		                <div class="page-header">
+		                    <h1>
+		                        {% block header %}
+		                            Titre
+		                        {% endblock header %}
+		                     </h1>
+		                 </div>
+		                 {% endblock pageHeader %}
+		            
+		            <!-- Display all flash messages : --> 
+		            {% include 'BraincraftedBootstrapBundle::flash.html.twig' with { 'close': true } %}
+		            
+		            </section>
+		        </div>
+                
+                {% block contain %}
+		        
+		        {% endblock contain %}
+		        
+		        <div class="row-fluid"> 
+		            {% block footer %}
+		            
+		            {% endblock footer %}
+		        <div> <!-- .row --> 
+		        
+		    </div> <!-- .container-fluid -->
+		    
+		{% endblock body %}
+
         
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        
+            {% javascripts
+		        'js/jquery.js'
+		        'js/bootstrap.js'
+		        
+		        '@SyndicMainBundle/Resources/public/js/*.js'
+		    %}
+		         <script type="text/javascript" src="{{ asset_url }}"></script>
+		    {% endjavascripts %}
+		    
+		    
+		    {# FOSJSRoutingBundle script : #}
+		    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+		    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        
+        {% endblock javascripts %}
     </body>
 </html>
