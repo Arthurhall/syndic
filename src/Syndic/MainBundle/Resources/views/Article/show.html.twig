@@ -1,60 +1,47 @@
-{% extends '::base.html.twig' %}
+{% extends 'SyndicMainBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Article</h1>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ entity.content }}</td>
-            </tr>
-            <tr>
-                <th>Createdat</th>
-                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Updatedat</th>
-                <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Publishedat</th>
-                <td>{{ entity.publishedAt|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Ispublished</th>
-                <td>{{ entity.isPublished }}</td>
-            </tr>
-            <tr>
-                <th>Isprivate</th>
-                <td>{{ entity.isPrivate }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ entity.slug }}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block title %}
+    {{ parent() }} - {{ article.title }}
+{% endblock %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('article') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('article_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+
+{% block header %}
+    {{ article.title }}
+{% endblock %}
+
+
+{% block content %}
+    
+    <article>
+        
+        {{ article.content | raw }}
+    
+        <footer>
+            <p>
+                {{ icon('calendar') }} 
+                Publié le : 
+                <span class="label label-success">{{ article.publishedAt|date('d/m/Y') }}</span>
+            </p>
+            
+            {% if article.updatedAt|date('Ymd') > article.publishedAt|date('Ymd') %}
+                <p>
+                    {{ icon('calendar') }} 
+                    Modifié le : 
+                    <span class="label label-warning">{{ article.updatedAt|date('d/m/Y') }}</span>
+                </p>
+            {% endif %}
+            
+            <p>
+                {{ icon('user') }} 
+                Auteur : 
+                <span class="label label-success">{{article.user}}</span>
+            </p>
+            
+        </footer>
+        
+    </article>
+    
+    {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
+    
 {% endblock %}

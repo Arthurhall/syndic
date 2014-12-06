@@ -32,13 +32,14 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         
-        "sonata-project/core-bundle": "2.3",
-        "sonata-project/admin-bundle": "2.3",
-        "sonata-project/user-bundle": "2.2",
+        "sonata-project/core-bundle": "~2.2",
+        "sonata-project/admin-bundle": "~2.2",
+        "sonata-project/user-bundle": "~2.2",
         "sonata-project/datagrid-bundle": "~2.2@dev",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
         "sonata-project/cache-bundle": "dev-master",
         "sonata-project/intl-bundle": "dev-master",
+        "sonata-project/jquery-bundle" : "1.8.*",
         
         "friendsofsymfony/comment-bundle": "dev-master",
         "friendsofsymfony/jsrouting-bundle": "@stable",

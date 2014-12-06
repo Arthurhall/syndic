@@ -110,16 +110,16 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SyndicMainBundle:Article')->find($id);
+        $article = $em->getRepository('SyndicMainBundle:Article')->find($id);
 
-        if (!$entity) {
+        if (!$article) {
             throw $this->createNotFoundException('Unable to find Article entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'article'      => $article,
             'delete_form' => $deleteForm->createView(),
         );
     }
