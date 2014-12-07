@@ -5,7 +5,7 @@ services:
     # KNP MENU CONFIG
     syndic_main.menu_builder:
         class: %syndic_main.menu_builder.class%
-        arguments: ["@knp_menu.factory"]
+        arguments: ["@knp_menu.factory", "@doctrine.orm.entity_manager"]
 
     syndic_main.menu.main:
         class: Knp\Menu\MenuItem # the service definition requires setting the class

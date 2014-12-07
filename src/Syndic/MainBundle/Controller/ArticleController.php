@@ -102,21 +102,21 @@ class ArticleController extends Controller
     /**
      * Finds and displays a Article entity.
      *
-     * @Route("/{id}", name="article_show")
+     * @Route("/{slug}", name="article_show")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $article = $em->getRepository('SyndicMainBundle:Article')->find($id);
+        $article = $em->getRepository('SyndicMainBundle:Article')->findOneBySlug($slug);
 
         if (!$article) {
             throw $this->createNotFoundException('Unable to find Article entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($article->getId());
 
         return array(
             'article'      => $article,

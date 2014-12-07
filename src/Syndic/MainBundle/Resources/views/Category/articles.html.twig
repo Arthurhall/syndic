@@ -14,11 +14,20 @@
 {% block content %}
     
     {% for article in articles %}
-        <div class="box">
-	        <h2>{{ article.title }}</h2>
-	        <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>
+                    <a href="{{ path('article_show', {'slug': article.slug}) }}">
+                        {{ article.title }}
+                    </a>
+                </h2>
+	        </div>
+	        <div class="panel-body">
                 {{ article.content }}
 	        </div>
+	        <div class="panel-footer">
+                {{ icon('calendar') }} <small>Publié le</small> {{ label_info(article.publishedAt | date('d/m/y')) }}
+            </div>
         </div>
     {% endfor %}
     

@@ -34,7 +34,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ SyndicMainBundle ]
+    bundles:        [ SyndicMainBundle, SyndicUserBundle, FOSCommentBundle ]
     #java: /usr/bin/java
     filters:
         lessphp:
@@ -95,7 +95,14 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        entity_managers:
+            default:
+                auto_mapping: true
+                mappings:
+                    FOSUserBundle: ~
+                    SonataUserBundle: ~
+                    SyndicUserBundle: ~
+                    SyndicMainBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -126,13 +133,13 @@ fos_user:
     from_email:
         address:        noreply@arthurhall.fr
         sender_name:    Syndic
-    registration:
-        form:
-            type:               syndic_user_registration
-            handler:            fos_user.registration.form.handler.default
-            validation_groups:  [Registration, Default]  
-        confirmation:
-            enabled:            true 
+    # registration:
+        # form:
+            # type:               syndic_user_registration
+            # handler:            fos_user.registration.form.handler.default
+            # validation_groups:  [Registration, Default]  
+        # confirmation:
+            # enabled:            true 
             #template:           FOSUserBundle:Registration:email.txt.twig
             #from_email: # Use this node only if you don't want the global email address for the confirmation email
                 #address:        noreply@amapissy.fr

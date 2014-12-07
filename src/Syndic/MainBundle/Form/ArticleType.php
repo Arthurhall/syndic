@@ -16,7 +16,12 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
+            ->add('content', 'textarea', array(
+				'label' => 'Contenu',
+				'attr' => array(
+					'class' => 'tinymce'
+				)
+			))
             ->add('createdAt')
             ->add('updatedAt')
             ->add('publishedAt')

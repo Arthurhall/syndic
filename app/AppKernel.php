@@ -40,7 +40,7 @@ class AppKernel extends Kernel
             
             new Syndic\MainBundle\SyndicMainBundle(),
             new Syndic\UserBundle\SyndicUserBundle('SonataUserBundle'),
-            new Syndic\CommentBundle\SyndicCommentBundle(),
+            new Syndic\CommentBundle\SyndicCommentBundle('FOSCommentBundle'),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
