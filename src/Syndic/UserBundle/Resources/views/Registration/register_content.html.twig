@@ -1,0 +1,26 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+        	{{ icon('pencil') }}
+        	{{ 'title_user_registration'|trans({}, 'SonataUserBundle') }}
+        </h2>
+    </div>
+    <div class="panel-body">
+        {{ form_start(form, {'style': 'horizontal'}) }}
+        
+            {{ form_row(form.username, { 'label_col': 3, 'widget_col': 9}) }}
+            {{ form_row(form.email, { 'label_col': 3, 'widget_col': 9}) }}
+            {{ form_row(form.plainPassword.first, { 'label_col': 3, 'widget_col': 9}) }}
+            {{ form_row(form.plainPassword.second, { 'label_col': 3, 'widget_col': 9}) }}
+            
+        <div class="form-group">
+        	<div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-success">
+                	{{ icon('user') }}
+                	{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}
+                </button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>

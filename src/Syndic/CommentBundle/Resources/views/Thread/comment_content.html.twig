@@ -64,15 +64,17 @@
                     <div class="fos_comment_comment_voting">
                         <button 
                             data-url="{{ url("fos_comment_new_thread_comment_votes", {"id": comment.thread.id, "commentId": comment.id, "value": 1}) }}" 
-                            class="fos_comment_comment_vote btn btn-primary"
+                            class="fos_comment_comment_vote btn btn-success btn-xs"
                         >
-                            {% trans from 'FOSCommentBundle' %}fos_comment_comment_show_voteup{% endtrans %}
+                            {{ icon('thumbs-up')}}
+                            {# {% trans from 'FOSCommentBundle' %}fos_comment_comment_show_voteup{% endtrans %} #}
                         </button>
                         <button 
                             data-url="{{ url("fos_comment_new_thread_comment_votes", {"id": comment.thread.id, "commentId": comment.id, "value": -1}) }}" 
-                            class="fos_comment_comment_vote btn btn-primary"
+                            class="fos_comment_comment_vote btn btn-danger btn-xs"
                         >
-                            {% trans from 'FOSCommentBundle' %}fos_comment_comment_show_votedown{% endtrans %}
+                            {{ icon('thumbs-down')}}
+                            {# {% trans from 'FOSCommentBundle' %}fos_comment_comment_show_votedown{% endtrans %} #}
                         </button>
                         <div class="fos_comment_comment_score" id="fos_comment_score_{{ comment.id }}">{% include "FOSCommentBundle:Thread:comment_votes.html.twig" with { 'commentScore': comment.score } %}</div>
                     </div>
@@ -82,6 +84,7 @@
     </div>
 
     <div id="fos_comment_comment_body_{{ comment.id }}" class="fos_comment_comment_body">
+    	<blockquote>
         {% block fos_comment_comment_body %}
             {% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
                 {% trans from 'FOSCommentBundle' %}fos_comment_comment_deleted{% endtrans %}
@@ -93,6 +96,7 @@
                 {% endif %}
             {% endif %}
         {% endblock fos_comment_comment_body %}
+        </blockquote>
     </div>
 
     {% block fos_comment_comment_children %}

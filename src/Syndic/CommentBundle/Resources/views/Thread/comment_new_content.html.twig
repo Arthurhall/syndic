@@ -49,10 +49,12 @@
                                 class="fos_comment_comment_reply_cancel btn btn-danger" 
                             />
                         {% endif %}
-                        <input type="submit" 
+                        <button type="submit" 
                             class="btn btn-primary" 
-                            value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}" 
-                        />
+                        >
+                        {{ icon('comment') }}
+                        {% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}
+                        </button>
                     {% endblock %}
                 </div>
 

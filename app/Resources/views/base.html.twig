@@ -39,25 +39,24 @@
 		                    <div class="collapse navbar-collapse navbar-ex1-collapse">
 		                        {{ knp_menu_render('main', { 'style': 'navbar' }) }}
 		                        
-		                        {#
+		                        
 		                        <ul class="nav navbar-nav navbar-right" id="connect">
 		                        {% if app.user is not null and is_granted('ROLE_USER') %}
 		                            <li>
-		                                <a href="{{path('logout')}}">
+		                                <a href="{{path('fos_user_security_logout')}}">
 		                                    {{ icon('user') }}
 		                                    Déconnexion
 		                                </a>
 		                            </li>
 		                        {% else %}
 		                            <li>
-		                                <a href="{{path('login')}}">
+		                                <a href="{{path('fos_user_security_login')}}">
 		                                    {{ icon('user') }}
 		                                    Connexion
 		                                </a>
 		                            </li>
 		                        {% endif %}
 		                        </ul>
-		                        #}
 		                        
 		                    </div><!-- .navbar-collapse -->
 		                </nav>

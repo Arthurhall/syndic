@@ -23,11 +23,8 @@
                 </h2>
 	        </div>
 	        <div class="panel-body">
-                {{ article.content }}
-	        </div>
-	        <div class="panel-footer">
                 {{ icon('calendar') }} <small>Publié le</small> {{ label_info(article.publishedAt | date('d/m/y')) }}
-            </div>
+	        </div>
         </div>
     {% endfor %}
     
