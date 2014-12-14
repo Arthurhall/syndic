@@ -1,4 +1,7 @@
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="form-horizontal fos_user_resetting_request">
+<form action="{{ path('fos_user_resetting_send_email') }}" 
+    method="POST" 
+    class="fos_user_resetting_request"
+>
     <div class="form-group">
         {% if invalid_username is defined %}
             <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</p>

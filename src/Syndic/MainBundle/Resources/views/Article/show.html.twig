@@ -16,7 +16,11 @@
     <article>
         
         {{ article.content | raw }}
-    
+        
+        {% for img in article.image %}
+            <img src="{{ img.webPath | apply_filter('my_thumb') }}" class="thumbnail" />    
+        {% endfor %}
+        
         <footer>
             <p>
                 {{ icon('calendar') }} 

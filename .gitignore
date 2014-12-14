@@ -3,6 +3,8 @@
 /web/js/
 /web/css/
 /web/uploads/
+/web/fonts/
+/web/media/
 
 /app/bootstrap.php.cache
 /app/cache/*

@@ -1,0 +1,17 @@
+{% extends 'SyndicMainBundle::layout.html.twig' %}
+
+
+{% block header %}
+    {{ icon('warning-sign') }}
+    Une erreur est survenue
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="alert alert-danger" role="alert">
+    	{{ icon('info-sign') }}
+        Message du serveur : "{{ status_code }} {{ status_text }}".</h2>
+    </div>
+    
+{% endblock %}

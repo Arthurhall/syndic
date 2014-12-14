@@ -46,6 +46,7 @@ class ImageAdmin extends Admin
             ->add('title')
             ->add('alt')
 			->add('file', 'file', array('required' => false))
+            ->add('article')
         ;
     }
 
@@ -54,8 +55,8 @@ class ImageAdmin extends Admin
         $datagridMapper
         	->add('title')
             ->add('alt')
-            ->add('createdAt', 'doctrine_orm_date', array('input_type' => 'date'))
-			->add('updatedAt', 'doctrine_orm_date', array('input_type' => 'date'))
+            ->add('createdAt')
+			->add('updatedAt')
         ;
     }
 
@@ -72,7 +73,7 @@ class ImageAdmin extends Admin
             
 			->add('_action', 'actions', array(
                 'actions' => array(
-                    'view' => array(),
+                    'show' => array(),
                     'delete' => array(),
                     //'edit' => array(),
                 )

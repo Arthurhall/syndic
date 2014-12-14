@@ -41,7 +41,7 @@ sonata_doctrine_orm_admin:
             - SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig
         types:
             list:
-                # image:      SonataAdminBundle:CRUD:list_image.html.twig
+                image:      SonataAdminBundle:CRUD:list_image.html.twig
                 # array:      SonataAdminBundle:CRUD:list_array.html.twig
                 boolean:    SonataAdminBundle:CRUD:list_boolean.html.twig
                 date:       SonataAdminBundle:CRUD:list_date.html.twig
