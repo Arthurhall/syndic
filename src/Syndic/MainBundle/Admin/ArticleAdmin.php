@@ -26,6 +26,22 @@ class ArticleAdmin extends Admin
 		;
     }
     
+    public function prePersist($object)
+    {
+        foreach ($object->getImage() as $key => $img) {
+            $img->upload();
+        }
+        $object->setImage($object->getImage());
+    }
+    
+    public function preUpdate($object)
+    {
+        foreach ($object->getImage() as $key => $img) {
+            $img->upload();
+        }
+        $object->setImage($object->getImage());
+    }
+    
     public $supportsPreviewMode = true;
 	
 	
@@ -42,12 +58,12 @@ class ArticleAdmin extends Admin
         			'class' => 'tinymce',
     			)
 			))
-			->add('image', 'sonata_type_model', array(
-                'required' => false, 
-                'expanded' => false, 
-                'by_reference' => false, 
-                'multiple' => true, 
-                'compound' => false
+			->add('image', 'sonata_type_collection', array(
+                'by_reference' => false
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable' => 'id',
             ))
         ;
     }

@@ -24,8 +24,6 @@ class Image
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-	
-	
 
     /**
      * @var string
@@ -66,6 +64,14 @@ class Image
      * })
      */
     private $article;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="article_id", type="integer", nullable=false)
+     */
+    private $articleId;
+    
     
     /**
      * Constructor
@@ -309,5 +315,28 @@ class Image
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * Set articleId
+     *
+     * @param integer $articleId
+     * @return Image
+     */
+    public function setArticleId($articleId)
+    {
+        $this->articleId = $articleId;
+
+        return $this;
+    }
+
+    /**
+     * Get articleId
+     *
+     * @return integer 
+     */
+    public function getArticleId()
+    {
+        return $this->articleId;
     }
 }

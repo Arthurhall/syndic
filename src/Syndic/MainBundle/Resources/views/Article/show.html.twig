@@ -17,9 +17,7 @@
         
         {{ article.content | raw }}
         
-        {% for img in article.image %}
-            <img src="{{ img.webPath | apply_filter('my_thumb') }}" class="thumbnail" />    
-        {% endfor %}
+        <hr />
         
         <footer>
             <p>
@@ -49,3 +47,12 @@
     {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id} %}
     
 {% endblock %}
+
+
+{% block sidebar %}
+
+	{% for img in article.image %}
+	    <img src="{{ img.webPath | apply_filter('my_thumb') }}" class="thumbnail pull-right" />    
+	{% endfor %}
+	
+{% endblock sidebar %}

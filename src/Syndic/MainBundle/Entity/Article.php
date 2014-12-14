@@ -85,7 +85,7 @@ class Article
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="article", cascade={"persist"})
      */
     private $image;
 
@@ -122,6 +122,24 @@ class Article
     public function __toString() {
 		return (string) $this->title;
 	}
+    
+    /**
+     * Set Image collection
+     * 
+     * @param Collection $images
+     * @return Article
+     */
+    public function setImage($images)
+    {
+        if (count($images) > 0) {
+            foreach ($images as $i) {
+                $i->setArticle( $this );
+                $this->addImage( $i );
+            }
+        }
+    
+        return $this;
+    }
     
     /**
      * Set isPublished

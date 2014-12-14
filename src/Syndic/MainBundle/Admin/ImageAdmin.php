@@ -14,19 +14,14 @@ use Sonata\AdminBundle\Route\RouteCollection;
 class ImageAdmin extends Admin
 {
 	public function prePersist($object) {
-    	$this->saveFile($object);
+    	$object->upload();
 	}
 
   	public function preUpdate($object) {
-    	$this->saveFile($object);
+    	$object->upload();
   	}
  
-  	public function saveFile($object) {
-    	$basepath = $this->getRequest()->getBasePath();
-    	$object->upload($basepath); 
-  	}
-	
-	// setup the default sort column and order
+ 	// setup the default sort column and order
     protected $datagridValues = array(
         '_sort_order' => 'DESC',
         '_sort_by' => 'createdAt'
@@ -46,7 +41,7 @@ class ImageAdmin extends Admin
             ->add('title')
             ->add('alt')
 			->add('file', 'file', array('required' => false))
-            ->add('article')
+            //->add('articleId', 'sonata_type_model_hidden')
         ;
     }
 
