@@ -41,7 +41,6 @@ class ImageAdmin extends Admin
             ->add('title')
             ->add('alt')
 			->add('file', 'file', array('required' => false))
-            //->add('articleId', 'sonata_type_model_hidden')
         ;
     }
 

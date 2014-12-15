@@ -27,14 +27,14 @@
         {% endif %}
         
         <div class="col-xs-4">
-        	<div class="well">
+        	<div class="box">
 				<h2>
 					<a class="shadow" href="{{ path('category_articles', {'slug': category.slug}) }}">
 						{{ icon('play') }}
                         {{ category.title }}
 				    </a>
 				</h2>
-				<blockquote>{{category.description}}</blockquote>
+				<p>{{category.description}}</p>
 			</div>
 		</div>
 		
