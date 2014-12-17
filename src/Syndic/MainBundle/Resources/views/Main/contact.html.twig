@@ -17,6 +17,21 @@
 {% endblock %}
 
 
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li>
+        <a href="{{ path('home') }}">
+            {{ icon('home') }}
+            Accueil
+        </a>
+    </li>
+    <li class="active">
+        Contact
+    </li>
+</ol>                
+{% endblock breadcrumb %}
+
+
 {% block content %}
     
 	{% if app.session.flashbag.has('messageSent') %}

@@ -11,6 +11,21 @@
 {% endblock %}
 
 
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li>
+        <a href="{{ path('home') }}">
+            {{ icon('home') }}
+            Accueil
+        </a>
+    </li>
+    <li class="active">
+        {{ category.title }}
+    </li>
+</ol>                
+{% endblock breadcrumb %}
+
+
 {% block content %}
     
     {% for article in articles %}
