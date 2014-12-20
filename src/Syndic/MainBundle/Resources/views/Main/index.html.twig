@@ -22,7 +22,7 @@
     </div>
     
 	{% for category in categories %}
-        {% if loop.first or loop.index is divisibleby(3) %}
+        {% if loop.first %}
 	       <div class="row">
         {% endif %}
         
@@ -38,8 +38,8 @@
 			</div>
 		</div>
 		
-		{% if loop.last or loop.index is divisibleby(3) %}
-           </div>
+		{% if loop.index is divisibleby(3) %}
+           </div>{% if not loop.last %} <div class="row"> {% endif %}
         {% endif %}
 		
 	{% endfor %}
