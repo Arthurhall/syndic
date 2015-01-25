@@ -4,6 +4,8 @@
 
 {% set path = '/' ~ value %}
 
-<img src="{{ path | apply_filter('small_thumb') }}" border="0" alt="{{object.alt}}" title="{{object.title}}" />
+{% if value %}
+    <img src="{{ path | apply_filter('small_thumb') }}" border="0" alt="{{object.alt}}" title="{{object.title}}" />
+{% endif %}
 
 {% endblock %}

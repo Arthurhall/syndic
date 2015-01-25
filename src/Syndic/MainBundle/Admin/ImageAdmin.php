@@ -37,10 +37,28 @@ class ImageAdmin extends Admin
 	
     protected function configureFormFields(FormMapper $formMapper)
     {
+        // get the current Image instance
+        $image = $this->getSubject();
+
+        // use $fileFieldOptions so we can add other options to the field
+        $fileFieldOptions = array(
+            'required' => false,
+            'attr' => array('class' => 'with-image-preview')
+        );
+        if ($image && ($webPath = $image->getWebPath())) 
+        {
+            // get the container so the full path to the image can be set
+            $container = $this->getConfigurationPool()->getContainer();
+            $fullPath = $container->get('request')->getBasePath().'/'.$webPath;
+
+            // add a 'help' option containing the preview's img tag
+            $fileFieldOptions['attr']['data-image-path'] = $fullPath;
+        }
+        
         $formMapper
             ->add('title')
             ->add('alt')
-			->add('file', 'file', array('required' => false))
+			->add('file', 'file', $fileFieldOptions)
         ;
     }
 
@@ -57,6 +75,7 @@ class ImageAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->addIdentifier('id')
             ->addIdentifier('title')
             ->add('alt')
             ->add('path')

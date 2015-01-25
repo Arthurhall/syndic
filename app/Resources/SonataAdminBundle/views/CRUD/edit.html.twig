@@ -4,5 +4,9 @@
     {{ parent() }}
     
     {{ tinymce_init() }}
+    
+    {% javascripts '@SyndicMainBundle/Resources/public/js/SonataAdmin.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 

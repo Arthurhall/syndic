@@ -36,6 +36,23 @@ class MainController extends Controller
     }
     
     /**
+     * Team
+     *
+     * @Route("/", name="team")
+     * @Method("GET")
+     * @Template("SyndicMainBundle:Main:team.html.twig")
+     */
+    public function teamAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $team = $em->getRepository('SyndicMainBundle:Team')->findAll();
+        
+        return array(
+            'team' => $team
+        );
+    }
+    
+    /**
      * Contact
      *
      * @Route("/contact", name="contact")

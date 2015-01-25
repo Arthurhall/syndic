@@ -48,22 +48,35 @@ class ArticleAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title')
-			->add('isPublished', 'checkbox', array('required' => false))
-			->add('category')
-			->add('user')
+            ->add('title', null, array(
+                'label' => 'titre'
+            ))
+			->add('isPublished', 'checkbox', array(
+                'required' => false,
+                'label' => 'Publié'
+            ))
+			->add('category', null, array(
+                'label' => 'Catégorie'
+            ))
+			->add('user', null, array(
+                'label' => 'Auteur'
+            ))
             ->add('content', 'textarea', array(
+                'label' => 'Contenu',
         		'attr' => array(
         			'required' => false,
         			'class' => 'tinymce',
+        			'data-theme' => 'advanced',
     			)
 			))
 			->add('image', 'sonata_type_collection', array(
-                'by_reference' => false
+                'label' => 'Image(s)',
+                'by_reference' => false,
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
                 'sortable' => 'id',
+                'allow_delete' => true
             ))
         ;
     }
