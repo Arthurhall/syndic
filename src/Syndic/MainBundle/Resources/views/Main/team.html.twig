@@ -1,0 +1,58 @@
+{% extends 'SyndicMainBundle::layout.html.twig' %}
+
+
+{% block title %}
+    {{ parent() }} - Vos élus CFE-CGC
+{% endblock %}
+
+
+{% block header %}
+    Vos élus CFE-CGC
+{% endblock %}
+
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li>
+        <a href="{{ path('home') }}">
+            {{ icon('home') }}
+            Accueil
+        </a>
+    </li>
+    <li class="active">
+        Vos élus CFE-CGC
+    </li>
+</ol>                
+{% endblock breadcrumb %}
+
+
+{% block content %}
+    
+    {% for person in team %}
+    
+        <article class="pull-left box">
+        	
+	        <div class="thumbnail">
+	            <img 
+	               src="{{ person.webPath | apply_filter('team_thumb') }}" 
+	               alt="{{person.firstName}} {{person.lastName}}"
+	               title="{{person.firstName}} {{person.lastName}}"
+                />
+	            <div class="caption">
+	                <h3>
+	                	{{ icon('user') }}
+	                	{{person.firstName}} {{person.lastName}}
+	                </h3>
+	                <p>
+	                	{{ icon('briefcase') }}
+	                	{{ person.job }}
+	                </p>
+	            </div>
+	        </div>
+        
+        </article>
+        	
+    {% endfor %}
+        
+{% endblock %}
+

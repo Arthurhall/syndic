@@ -39,6 +39,8 @@ class MenuBuilder
 			)->setAttribute('divider_append', true);
 		}
 		
+		$menu->addChild('Vos élus', array('route' => 'team'));
+        
 		$menu->addChild('Contact', array('route' => 'contact'));
         
         return $menu;

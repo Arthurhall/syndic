@@ -210,8 +210,8 @@ avalanche_imagine:
         galery_thumb:
             type:    thumbnail
             options: { size: [120, 90], mode: outbound, quality: 100, format: png }
-        circle_thumb:
+        team_thumb:
             type:    thumbnail
-            options: { size: [110, 110], mode: outbound, quality: 100, format: png }
+            options: { size: [230, 230], mode: outbound, quality: 100, format: png }
             
 

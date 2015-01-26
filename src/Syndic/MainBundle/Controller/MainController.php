@@ -38,7 +38,7 @@ class MainController extends Controller
     /**
      * Team
      *
-     * @Route("/", name="team")
+     * @Route("/vos-elus", name="team")
      * @Method("GET")
      * @Template("SyndicMainBundle:Main:team.html.twig")
      */

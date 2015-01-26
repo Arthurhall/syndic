@@ -2,10 +2,13 @@
 
 {% block field %}
 
-{% set path = '/' ~ value %}
-
 {% if value %}
-    <img src="{{ path | apply_filter('small_thumb') }}" border="0" alt="{{object.alt}}" title="{{object.title}}" />
+    <img 
+        src="{{ value | apply_filter('small_thumb') }}" 
+        border="0" 
+        alt="{% if object.alt is defined %}{{object.alt}}{% endif %}" 
+        title="{% if object.title is defined %}{{object.title}}{% endif %}" 
+    />
 {% endif %}
 
 {% endblock %}

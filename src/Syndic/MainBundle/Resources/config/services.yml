@@ -18,10 +18,16 @@ services:
 
 
     # ADMIN :
+    admin.category:
+        class: Syndic\MainBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Site, label: Catégories }
+        arguments: [ null, Syndic\MainBundle\Entity\Category, SonataAdminBundle:CRUD ]
+        
     admin.article:
         class: Syndic\MainBundle\Admin\ArticleAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Blog, label: Article }
+            - { name: sonata.admin, manager_type: orm, group: Site, label: Article }
         arguments: [ null, Syndic\MainBundle\Entity\Article, SonataAdminBundle:CRUD ]
         # calls:
             # - [ setSecurityContext, [ @security.context ] ]
@@ -30,13 +36,12 @@ services:
     admin.image:
         class: Syndic\MainBundle\Admin\ImageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Blog, label: Images }
+            - { name: sonata.admin, manager_type: orm, group: Site, label: Gallerie }
         arguments: [ null, Syndic\MainBundle\Entity\Image, SonataAdminBundle:CRUD ]
         
-    admin.category:
-        class: Syndic\MainBundle\Admin\CategoryAdmin
+    admin.team:
+        class: Syndic\MainBundle\Admin\TeamAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Blog, label: Catégories }
-        arguments: [ null, Syndic\MainBundle\Entity\Category, SonataAdminBundle:CRUD ]
-        
+            - { name: sonata.admin, manager_type: orm, group: Site, label: Equipe }
+        arguments: [ null, Syndic\MainBundle\Entity\Team, SonataAdminBundle:CRUD ]    
 
