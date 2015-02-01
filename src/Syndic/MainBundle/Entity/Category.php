@@ -41,6 +41,16 @@ class Category
      * @Gedmo\Slug(fields={"title"})
      */
     private $slug;
+    
+    /**
+     * @var \Group
+     *
+     * @ORM\ManyToOne(targetEntity="Syndic\UserBundle\Entity\Group")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="group_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $group;
 
 	
 	public function __toString() {
@@ -125,5 +135,28 @@ class Category
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \Syndic\UserBundle\Entity\Group $group
+     * @return Category
+     */
+    public function setGroup(\Syndic\UserBundle\Entity\Group $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Syndic\UserBundle\Entity\Group 
+     */
+    public function getGroup()
+    {
+        return $this->group;
     }
 }

@@ -1,5 +1,10 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
+{% block header %}
+    {{ icon('send') }}
+    Vérification par E-mail
+{% endblock %}
+
 {% block fos_user_content %}
 <p>
 {{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}

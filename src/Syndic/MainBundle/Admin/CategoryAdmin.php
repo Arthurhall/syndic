@@ -26,6 +26,7 @@ class CategoryAdmin extends Admin
     {
         $formMapper
             ->add('title')
+            ->add('group')
             ->add('description', 'textarea')
         ;
     }
@@ -41,6 +42,7 @@ class CategoryAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title')
+            ->addIdentifier('group')
             
 			->add('_action', 'actions', array(
                 'actions' => array(

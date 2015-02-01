@@ -28,7 +28,7 @@
 
 		    <div class="container-fluid">
 		        
-		        <div class="row-fluid">
+		        <div class="row">
 		            <header class="col-xs-12">
 		                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		                    
@@ -62,9 +62,9 @@
 		                </nav>
 		                
 		            </header>
-		        </div> <!-- .row -->        
+                </div> <!-- .row -->        
 		        
-		        <div class="row-fluid">
+		        <div class="row">
 		            <section class="col-xs-12">
 		                
 		                {% block pageHeader %}
@@ -72,17 +72,17 @@
 		                    <h1>
 		                        {% block header %}
 		                            Titre
-		                        {% endblock header %}
-		                     </h1>
-		                 </div>
-		                 {% endblock pageHeader %}
+                                {% endblock header %}
+                            </h1>
+		                </div>
+                        {% endblock pageHeader %}
 		            
-		            <!-- Display all flash messages : --> 
-		            {% include 'BraincraftedBootstrapBundle::flash.html.twig' with { 'close': true } %}
-		            
-		            {% block breadcrumb %}
-                
-                    {% endblock breadcrumb %}
+    		            <!-- Display all flash messages : --> 
+    		            {% include 'BraincraftedBootstrapBundle::flash.html.twig' with { 'close': true } %}
+    		            
+    		            {% block breadcrumb %}
+                    
+                        {% endblock breadcrumb %}
                 
 		            </section>
 		        </div><!-- .row -->
@@ -91,43 +91,41 @@
 		        
 		        {% endblock contain %}
 		        
-		        <footer class="site-footer">
-		        	<div class="row-fluid"> 
-			        	<div class="col-xs-12">
-			            {% block footer %}
-	                        
-	                        <ul class="list-unstyled list-center">
-	                        	<li>
-			                        <strong>Vos délégués syndicaux : </strong>
-									Véronique Bernagou, Christine Julien-Deguisne et Vincent Siri délégué syndical central
-	                            </li>
-	                            <li>
-	                                <strong>Vos représentants CE : </strong>
-	                                Christine Julien-Deguisne, Bruno Hall, Isabelle Mathys et Vincent Siri.
-	                            </li>
-	                            <li>
-	                                <strong>Vos représentants DP : </strong>
-	                                Véronique Bernagou, Jeanine Bielle, Michel Bogula, Dominique Pasqual, Vincent Siri.
-	                            </li>
-	                            <li>
-	                                <strong>CHSCT : </strong> 
-	                                Odile Veret, Jeanine Bielle, Véronique Bernagou.
-	                            </li>
-	                            <li>
-	                                N’hésitez pas à 
-	                                <a href="{{ path('contact') }}">
-	                                    nous contacter 
-	                                </a>
-	                                pour toute demande de renseignements
-	                            </li>
-							</ul>
-							
-			            {% endblock footer %}
-	                    </div>
-                    </div><!-- .row --> 
-		        </footer> 
-		        
 		    </div> <!-- .container-fluid -->
+		    
+		    <footer class="footer">
+                <div class="container"> 
+                    {% block footer %}
+                        
+                        <ul class="list-unstyled list-center">
+                            <li>
+                                <strong>Vos délégués syndicaux : </strong>
+                                Véronique Bernagou, Christine Julien-Deguisne et Vincent Siri délégué syndical central
+                            </li>
+                            <li>
+                                <strong>Vos représentants CE : </strong>
+                                Christine Julien-Deguisne, Bruno Hall, Isabelle Mathys et Vincent Siri.
+                            </li>
+                            <li>
+                                <strong>Vos représentants DP : </strong>
+                                Véronique Bernagou, Jeanine Bielle, Michel Bogula, Dominique Pasqual, Vincent Siri.
+                            </li>
+                            <li>
+                                <strong>CHSCT : </strong> 
+                                Odile Veret, Jeanine Bielle, Véronique Bernagou.
+                            </li>
+                            <li>
+                                N’hésitez pas à 
+                                <a href="{{ path('contact') }}">
+                                    nous contacter 
+                                </a>
+                                pour toute demande de renseignements
+                            </li>
+                        </ul>
+                        
+                    {% endblock footer %}
+                </div><!-- .container --> 
+            </footer> 
 		    
 		{% endblock body %}
 

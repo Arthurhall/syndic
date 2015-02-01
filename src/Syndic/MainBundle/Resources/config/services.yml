@@ -1,6 +1,7 @@
 parameters:
     syndic_main.menu_builder.class: Syndic\MainBundle\Menu\MenuBuilder
-
+    syndic_main.category_authorization.class: Syndic\MainBundle\Services\CategoryAuthorization
+    
 services:
     # KNP MENU CONFIG
     syndic_main.menu_builder:
@@ -15,7 +16,11 @@ services:
         scope: request # needed as we have the request as a dependency here
         tags:
             - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
-
+    
+    # Category authorization
+    syndic_main.category_authorization:
+        class: %syndic_main.category_authorization.class%
+        arguments: [ @security.context, @router, @braincrafted_bootstrap.flash ]
 
     # ADMIN :
     admin.category:

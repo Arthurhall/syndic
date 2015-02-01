@@ -51,8 +51,8 @@ security:
 
         
     access_control:
-        - { path: ^/categorie.*, role: [ROLE_MEMBER] }
-        - { path: ^/article.*, role: [ROLE_MEMBER] }
+        # - { path: ^/categorie.*, role: [ROLE_MEMBER] }
+        # - { path: ^/article.*, role: [ROLE_MEMBER] }
       
         # URL of FOSUserBundle which need to be available to anonymous users
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -49,7 +49,7 @@ class ImageAdmin extends Admin
         {
             // get the container so the full path to the image can be set
             $container = $this->getConfigurationPool()->getContainer();
-            $fullPath = $container->get('request')->getBasePath().'/'.$webPath;
+            $fullPath = $container->get('request')->getBasePath().$webPath;
 
             // add a 'help' option containing the preview's img tag
             $fileFieldOptions['attr']['data-image-path'] = $fullPath;

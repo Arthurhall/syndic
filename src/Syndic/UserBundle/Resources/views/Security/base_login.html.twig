@@ -76,7 +76,14 @@
 
         </div>
         <div class="col-md-6">
-            {% render controller("FOSUserBundle:Registration:register") %}
+            {# render controller("FOSUserBundle:Registration:register") #}
+            
+            {# include "FOSUserBundle:Registration:register_content.html.twig" #}
+            
+            <a href="{{ path('sonata_user_registration_register') }}" class="btn btn-large btn-primary">
+            	{{ icon('pencil') }}
+            	Pas encore inscrit ?
+            </a>
         </div>
     </div>
 {% endblock fos_user_content %}

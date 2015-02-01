@@ -115,6 +115,12 @@ class ArticleController extends Controller
         if (!$article) {
             throw $this->createNotFoundException('Unable to find Article entity.');
         }
+        
+        $ca = $this->get('syndic_main.category_authorization');
+        if(!$ca->isAuthorized($article->getCategory()))
+        {
+            return $ca->getRedirectResponse($article->getCategory());
+        }
 
         $deleteForm = $this->createDeleteForm($article->getId());
 

@@ -34,6 +34,12 @@ class CategoryController extends Controller
             throw $this->createNotFoundException('Catégorie introuvable.');
         }
         
+        $ca = $this->get('syndic_main.category_authorization');
+        if(!$ca->isAuthorized($category))
+        {
+            return $ca->getRedirectResponse($category);
+        }
+        
         $articles = $em->getRepository('SyndicMainBundle:Article')->findByCategory( $category );
         
         return array(
@@ -42,47 +48,4 @@ class CategoryController extends Controller
         );
     }
     
-    /**
-     * Contact
-     *
-     * @Route("/contact", name="contact")
-     * @Method({"GET", "POST"})
-     * @Template("SyndicMainBundle:Main:contact.html.twig")
-     */
-    public function contactAction(Request $request)
-    {
-        $url = $this->generateUrl('contact');
-        
-        $form = $this->createForm(new ContactType(), null, array(
-            'action' => $url,
-            'method' => 'POST',
-        ));
-        
-        $form->handleRequest($request);
-
-        if ($form->isValid()) 
-        {
-            $data = $form->getData();
-            
-            $message = \Swift_Message::newInstance()
-                ->setSubject('Contact - Syndic')
-                ->setFrom( $data['email'] )
-                ->setTo( 'test@test.fr' )
-                ->setCharset('UTF-8')    
-                ->setContentType('text/html')
-                ->setBody( $this->renderView('SyndicMainBundle:Main:contact_mail.html.twig', array('data' => $data)) )
-            ;
-            
-            $this->get('mailer')->send($message); 
-            
-            $flash = $this->get('braincrafted_bootstrap.flash');
-            $flash->success('Votre message a bien été envoyé.');    
-            
-            return $this->redirect($url);
-        }
-        
-        return array(
-            'form' => $form->createView(),
-        );
-    }
 }

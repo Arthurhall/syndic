@@ -85,7 +85,7 @@ class Article
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="article", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="article", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $image;
 

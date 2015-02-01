@@ -28,17 +28,27 @@ footer .list-center {
 }
 
 /*
- * FOOTER
+ * FOOTER "Sticky footer"
  */
-footer.site-footer {
+html {
+    min-height: 100%;
+    position: relative;
+}
+body {
+    margin-bottom: 250px;
+}
+footer.footer {
 		color: #fff;
 		
-		.col-xs-12 {
-				background-color: #838994;	
-				padding: 40px 0 40px 0;
-				border-top: 1px solid #EBEBEB;
-				box-shadow: 0px 0px 18px 0px darken(#838994, 10%) inset;
-		}
+		bottom: 0;
+        // height: 200px;
+        position: absolute;
+        width: 100%;
+		
+		background-color: #838994;	
+		padding: 40px 0 40px 0;
+		border-top: 1px solid #EBEBEB;
+		box-shadow: 0px 0px 18px 0px darken(#838994, 10%) inset;
 		
 		.list-center {
 				margin: 0 auto;
@@ -61,10 +71,10 @@ footer.site-footer {
    text-shadow: 1px 1px #ededed, 
                 2px 2px @color, 
                 3px 3px 1px @color;
-   -webkit-transition: all 0.12s ease-out;
-   -moz-transition:    all 0.12s ease-out;
-   -ms-transition:     all 0.12s ease-out;
-   -o-transition:      all 0.12s ease-out;
+   -webkit-transition: all 1s ease-out;
+   -moz-transition:    all 1s ease-out;
+   -ms-transition:     all 1s ease-out;
+   -o-transition:      all 1s ease-out;
    
    &:hover, &:focus {
    outline:none;
@@ -80,8 +90,7 @@ footer.site-footer {
 	}
 }
 
-.shadow {
-	color:#333; 
+.shadow { 
 	.shadow(#d4d4d4);
 	
 	&:hover, &:focus {

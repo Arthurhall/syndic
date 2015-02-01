@@ -1,4 +1,9 @@
+{% extends "SonataUserBundle::layout.html.twig" %}
 
+{% block header %}
+    {{ icon('user') }}
+    Inscrivez-vous
+{% endblock %}
 
 {% block fos_user_content %}
 {% include "SonataUserBundle:Registration:register_content.html.twig" %}

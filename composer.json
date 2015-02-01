@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.5.*",
+        "symfony/symfony": "2.6.*",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
         "twig/extensions": "~1.0",
@@ -49,7 +49,7 @@
         "stof/doctrine-extensions-bundle": "~1.1@dev",
         "stfalcon/tinymce-bundle": "dev-master",
         "braincrafted/bootstrap-bundle": "dev-master",
-        "twbs/bootstrap": "3.0.*",
+        "twbs/bootstrap": "3.3.*",
         "jquery/jquery":  "1.11.*",
         "leafo/lessphp": "0.4.0",
         "oyejorge/less.php": "~1.5",
@@ -90,7 +90,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.5-dev"
+            "dev-master": "2.6-dev"
         }
     }
 }

@@ -6,7 +6,7 @@
         </h2>
     </div>
     <div class="panel-body">
-        {{ form_start(form, {'style': 'horizontal'}) }}
+        {{ form_start(form, {'style': 'horizontal', 'action': path('sonata_user_registration_register')}) }}
         
             {{ form_row(form.username, { 'label_col': 3, 'widget_col': 9}) }}
             {{ form_row(form.email, { 'label_col': 3, 'widget_col': 9}) }}

@@ -72,6 +72,7 @@ class ArticleAdmin extends Admin
 			->add('image', 'sonata_type_collection', array(
                 'label' => 'Image(s)',
                 'by_reference' => false,
+                'type_options' => array('delete' => true),
             ), array(
                 'edit' => 'inline',
                 'inline' => 'table',
