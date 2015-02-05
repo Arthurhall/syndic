@@ -74,7 +74,7 @@
 {% block sidebar %}
 
 	{% for img in article.image if img.webPath %}
-	    <img src="{{ img.webPath | apply_filter('my_thumb') }}" class="thumbnail pull-right" />    
+	    <img src="{{ img.webPath | apply_filter('my_thumb') }}" class="thumbnail pull-left" />    
 	{% endfor %}
 	
 {% endblock sidebar %}
