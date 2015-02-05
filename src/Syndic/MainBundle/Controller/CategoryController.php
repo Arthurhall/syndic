@@ -25,7 +25,7 @@ class CategoryController extends Controller
      * @Method("GET")
      * @Template("SyndicMainBundle:Category:articles.html.twig")
      */
-    public function articlesAction($slug)
+    public function articlesAction($slug, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         
@@ -34,17 +34,26 @@ class CategoryController extends Controller
             throw $this->createNotFoundException('Catégorie introuvable.');
         }
         
+        $qb = $em->getRepository('SyndicMainBundle:Article')->listByCategory( $category->getId() );
+        
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $qb->getQuery(),
+            $request->query->get('page', 1) /*page number*/,
+            $request->query->get('perPage', 10) /*limit per page*/
+        );
+
+        
+        
         $ca = $this->get('syndic_main.category_authorization');
         if(!$ca->isAuthorized($category))
         {
             return $ca->getRedirectResponse($category);
         }
         
-        $articles = $em->getRepository('SyndicMainBundle:Article')->findByCategory( $category );
-        
         return array(
             'category' => $category,
-            'articles' => $articles,
+            'pagination' => $pagination,
         );
     }
     

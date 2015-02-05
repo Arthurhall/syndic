@@ -1,0 +1,17 @@
+{% macro formPerPage(request, id) %}
+
+	<form action="{{ request.uri }}" method="get" id="{{ id|default('form-per-page') }}" class="form-per-page">
+		{% set perPage = request.query.get('perPage', 10) %}
+		<select name="perPage" onchange="$('#{{ id }}').submit();" class="form-control">
+			<option value="10" {% if perPage == 10 %} selected {% endif %}>10 par page</option>
+			<option value="25"{% if perPage == 25 %} selected {% endif %}>25 par page</option>
+			<option value="50"{% if perPage == 50 %} selected {% endif %}>50 par page</option>
+			<option value="75"{% if perPage == 75 %} selected {% endif %}>75 par page</option>
+			<option value="100"{% if perPage == 100 %} selected {% endif %}>100 par page</option>
+		</select>
+		{% for key, val in request.query.all() if key != 'perPage' %}
+            <input type="hidden" name="{{key}}" value="{{val}}" />
+		{% endfor %}
+	</form>
+	
+{% endmacro %}

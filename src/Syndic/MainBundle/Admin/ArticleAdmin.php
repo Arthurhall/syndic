@@ -28,18 +28,24 @@ class ArticleAdmin extends Admin
     
     public function prePersist($object)
     {
-        foreach ($object->getImage() as $key => $img) {
-            $img->upload();
+        if($object && $object->getImage())
+        {
+            foreach ($object->getImage() as $key => $img) {
+                $img->upload();
+            }
+            $object->setImage($object->getImage());
         }
-        $object->setImage($object->getImage());
     }
     
     public function preUpdate($object)
     {
-        foreach ($object->getImage() as $key => $img) {
-            $img->upload();
+        if($object && $object->getImage())
+        {
+            foreach ($object->getImage() as $key => $img) {
+                $img->upload();
+            }
+            $object->setImage($object->getImage());
         }
-        $object->setImage($object->getImage());
     }
     
     public $supportsPreviewMode = true;

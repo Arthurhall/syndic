@@ -8,54 +8,23 @@ use Syndic\MainBundle\Entity\Category;
 
 class ArticleRepository extends EntityRepository
 {
-	public function findHome()
-	{
-		$qb = $this->createQueryBuilder('a')
-			->addSelect('i')
-            ->leftJoin('a.image', 'i')
-		;
-        
-        $r = $qb->getQuery()
-            ->getOneOrNullResult();
-		return $r;
-	}
-	
-    public function findAllPublished()
+    /**
+     * @return \QueryBuilder
+     */
+    public function listByCategory( $categoryId )
     {
         $qb = $this->createQueryBuilder('a')
-            ->addSelect('c')
             
-            ->InnerJoin('a.category', 'c')
-            
-            ->where('a.isPublished = 1')
-			
-			->orderBy('a.publishedAt', 'DESC')
-        ;
-        
-        $r = $qb->getQuery()
-        ->getResult();
-    
-        return $r;
-    }
-    
-    public function findByCategory( Category $category )
-    {
-        $qb = $this->createQueryBuilder('a')
-            ->addSelect('c')
-            
-            ->InnerJoin('a.category', 'c')
+            ->innerJoin('a.category', 'c')
 			
 			->where('a.isPublished = 1')
 			->andWhere('c.id = :id')
-            ->setParameter('id', $category->getId())
+            ->setParameter('id', $categoryId)
 			
 			->orderBy('a.publishedAt', 'DESC')
         ;
 		
-        $r = $qb->getQuery()
-        ->getResult();
-    
-        return $r;
+        return $qb;
     }
 	
 	public function findAllByMonth( array $arr = null )

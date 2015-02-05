@@ -27,8 +27,22 @@
 
 
 {% block content %}
-    
-    {% for article in articles %}
+
+    <div class="nav-pagination clearfix">   
+    	<span class="label label-info">
+            Total : {{ pagination.getTotalItemCount }}
+        </span>
+		<div class="pull-right">
+            {{ knp_pagination_render(pagination) }} {# , null, {}, {'alignment': 'center'} #}
+		</div>
+		<div class="pull-right">
+            {% import 'SyndicMainBundle::_macro.html.twig' as macro %}
+            {{ macro.formPerPage( app.request ) }}
+        </div>
+    </div>
+
+
+    {% for article in pagination %}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2>
@@ -41,6 +55,25 @@
                 {{ icon('calendar') }} <small>Publié le</small> {{ label_info(article.publishedAt | date('d/m/y')) }}
 	        </div>
         </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+        	{{ icon('ban-circle') }}
+        	Aucun élément trouvé !
+        </div>
     {% endfor %}
+    
+    
+    <div class="nav-pagination clearfix">   
+        <span class="label label-info">
+            Total : {{ pagination.getTotalItemCount }}
+        </span>
+        <div class="pull-right">
+            {{ knp_pagination_render(pagination) }} {# , null, {}, {'alignment': 'center'} #}
+        </div>
+        <div class="pull-right">
+            {% import 'SyndicMainBundle::_macro.html.twig' as macro %}
+            {{ macro.formPerPage( app.request, 'form-per-page-bottom' ) }}
+        </div>
+    </div>
     
 {% endblock content %}
