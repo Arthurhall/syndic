@@ -20,6 +20,7 @@
         </a>
     </li>
     <li class="active">
+    	{{ icon('folder-open') }} &nbsp;
         {{ category.title }}
     </li>
 </ol>                
@@ -47,6 +48,7 @@
             <div class="panel-heading">
                 <h2>
                     <a href="{{ path('article_show', {'slug': article.slug}) }}">
+                    	{{ icon('file') }}
                         {{ article.title }}
                     </a>
                 </h2>

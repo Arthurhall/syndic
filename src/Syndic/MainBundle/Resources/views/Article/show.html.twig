@@ -21,10 +21,12 @@
     </li>
     <li>
     	<a href="{{ path('category_articles', {'slug': article.category.slug}) }}">
+    		{{ icon('folder-open') }} &nbsp;
     		{{ article.category }}
     	</a>
     </li>
     <li class="active">
+    	{{ icon('file') }}
     	{{ article.title }}
     </li>
 </ol>                
